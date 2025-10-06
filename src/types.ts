@@ -29,3 +29,4 @@ export interface EmbeddingRow {
 export interface QueryResult {
   doc: StoredDoc;
   score: number; // cosine
+}

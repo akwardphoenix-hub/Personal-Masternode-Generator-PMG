@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getProposals, getVotes } from './services/councilService';
+import { getProposals } from './services/councilService';
 
 interface Proposal {
   id: string;

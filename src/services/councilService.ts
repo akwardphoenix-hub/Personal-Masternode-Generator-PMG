@@ -31,7 +31,7 @@ async function fetchWithTimeout(url: string, ms = 4000): Promise<Response> {
   }
 }
 
-async function safeJson(url: string): Promise<any> {
+async function safeJson<T>(url: string): Promise<T> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
@@ -44,15 +44,17 @@ export async function getProposals(): Promise<Proposal[]> {
     try {
       const r = await fetchWithTimeout(api, 4000);
       if (r.ok) return r.json();
-    } catch (_) { /* swallow; fallback to local */ }
+    } catch {
+      /* swallow; fallback to local */
+    }
   }
-  return safeJson(LOCAL.proposals);
+  return safeJson<Proposal[]>(LOCAL.proposals);
 }
 
-export async function getVotes() {
-  return safeJson(LOCAL.votes);
+export async function getVotes(): Promise<unknown[]> {
+  return safeJson<unknown[]>(LOCAL.votes);
 }
 
-export async function getAuditLog() {
-  return safeJson(LOCAL.audit);
+export async function getAuditLog(): Promise<unknown[]> {
+  return safeJson<unknown[]>(LOCAL.audit);
 }
