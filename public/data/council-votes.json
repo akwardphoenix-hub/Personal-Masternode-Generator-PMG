@@ -1,0 +1,26 @@
+[
+  {
+    "proposalId": "prop-001",
+    "voterId": "voter-001",
+    "vote": "approve",
+    "timestamp": "2024-01-16T09:30:00Z"
+  },
+  {
+    "proposalId": "prop-001",
+    "voterId": "voter-002",
+    "vote": "approve",
+    "timestamp": "2024-01-16T10:15:00Z"
+  },
+  {
+    "proposalId": "prop-002",
+    "voterId": "voter-001",
+    "vote": "approve",
+    "timestamp": "2024-01-11T11:00:00Z"
+  },
+  {
+    "proposalId": "prop-003",
+    "voterId": "voter-003",
+    "vote": "reject",
+    "timestamp": "2024-01-21T16:45:00Z"
+  }
+]

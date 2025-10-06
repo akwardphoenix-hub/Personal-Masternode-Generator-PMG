@@ -1,0 +1,41 @@
+name: e2e
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci --no-audit --prefer-offline
+
+      - name: Install Playwright
+        run: npx playwright install chromium
+
+      - name: Build
+        env:
+          VITE_TELEMETRY_DISABLED: "1"
+          NODE_ENV: "production"
+        run: npm run build
+
+      - name: Run E2E
+        env:
+          VITE_OFFLINE_ONLY: "true"
+        run: npm run ci:all
+
+      - name: Upload report (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report

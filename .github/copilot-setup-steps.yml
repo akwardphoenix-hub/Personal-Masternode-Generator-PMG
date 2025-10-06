@@ -1,0 +1,27 @@
+name: Copilot Setup Steps
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install deps (no audit)
+      shell: bash
+      run: |
+        npm ci --no-audit --prefer-offline
+
+    - name: Install Playwright browser (Chromium only)
+      shell: bash
+      run: |
+        npx playwright install chromium
+
+    - name: Build app (previews from dist, localhost only)
+      env:
+        VITE_TELEMETRY_DISABLED: "1"
+        NODE_ENV: "production"
+      shell: bash
+      run: |
+        npm run build
