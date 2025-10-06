@@ -1,0 +1,32 @@
+[
+  {
+    "id": "audit-001",
+    "timestamp": "2024-01-15T10:05:00Z",
+    "action": "proposal_created",
+    "userId": "admin-001",
+    "details": {
+      "proposalId": "prop-001",
+      "title": "Upgrade Network Infrastructure"
+    }
+  },
+  {
+    "id": "audit-002",
+    "timestamp": "2024-01-16T09:30:00Z",
+    "action": "vote_cast",
+    "userId": "voter-001",
+    "details": {
+      "proposalId": "prop-001",
+      "vote": "approve"
+    }
+  },
+  {
+    "id": "audit-003",
+    "timestamp": "2024-01-20T14:30:00Z",
+    "action": "proposal_created",
+    "userId": "admin-002",
+    "details": {
+      "proposalId": "prop-003",
+      "title": "Security Audit Initiative"
+    }
+  }
+]
